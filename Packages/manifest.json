@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "com.unity.render-pipelines.lightweight": "1.1.5-preview",
+    "com.unity.render-pipelines.core": "1.1.5-preview",
+    "com.unity.entities": "0.0.12-preview.7",
+    "com.unity.incrementalcompiler": "0.0.42-preview.6"
+  },
+  "testables": [
+    "com.unity.collections",
+    "com.unity.entities",
+    "com.unity.jobs"
+  ],
+  "registry": "https://staging-packages.unity.com"
+}
