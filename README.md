@@ -36,3 +36,10 @@ uSpringBone implements such that complex rotation calculation is separated from 
 * Addition of rotation area restriction function
 * Additional shape of Collision
 * Implementation of EditorWindow to make setup easy
+
+
+
+## Licence
+
+* [BSD 3-Clause "New" or "Revised" License](https://github.com/EsProgram/uSpringBone/blob/master/LICENSE)
+* © Unity Technologies Japan/UCL
