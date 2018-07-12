@@ -55,7 +55,7 @@ namespace Es.uSpringBone
                     }
 
                     var localPosition = boneData[i].localPosition;
-                    var localRotation = Quaternion.identity * boneData[i].localRotation;
+                    var localRotation = boneData[i].localRotation;
                     var grobalPosition = parentPosition + parentRotation * localPosition;
                     var grobalRotation = parentRotation * localRotation;
 
@@ -90,6 +90,14 @@ namespace Es.uSpringBone
                     dataTemp.grobalRotation = targetRotation * parentRotation;
                     parentPosition = dataTemp.grobalPosition;
                     parentRotation = dataTemp.grobalRotation;
+
+                    // reset root.
+                    if(boneData[i].IsRootBone){
+                        dataTemp.grobalPosition = grobalPosition;
+                        dataTemp.grobalRotation = grobalRotation;
+                        parentPosition = grobalPosition;
+                        parentRotation = grobalRotation;
+                    }
 
                     boneData[i] = dataTemp;
                 }
