@@ -24,9 +24,10 @@ namespace Es.uSpringBone
             {
                 if (instance == null)
                 {
-                    var obj = Instantiate(new GameObject());
+                    var obj = new GameObject();
                     obj.name = DefaultObjectName;
-                    obj.AddComponent<SpringBoneJobScheduler>();
+                    obj.hideFlags = HideFlags.HideInHierarchy;
+                    instance = obj.AddComponent<SpringBoneJobScheduler>();
                 }
                 return instance;
             }
