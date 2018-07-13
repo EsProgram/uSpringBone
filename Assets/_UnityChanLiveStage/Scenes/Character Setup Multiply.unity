@@ -1,0 +1,2491 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.14705884, g: 0.14705884, b: 0.14705884, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.02
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientEquatorColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &4
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 11
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_TemporalCoherenceThreshold: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 10
+    m_Resolution: 1
+    m_BakeResolution: 80
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 0
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 0
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 1
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVRFilteringMode: 0
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
+  m_LightingDataAsset: {fileID: 0}
+  m_UseShadowmask: 0
+--- !u!196 &5
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666666
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1001 &54862744
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1080042660}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &54862745 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 54862744}
+--- !u!1001 &79949671
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 294286394}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &79949672 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 79949671}
+--- !u!1 &168297059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 168297061}
+  - component: {fileID: 168297060}
+  m_Layer: 20
+  m_Name: Directional light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &168297060
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 168297059}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 1
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &168297061
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 168297059}
+  m_LocalRotation: {x: 0.40821797, y: -0.23456974, z: 0.10938168, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &198330221
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1879728808}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &198330222 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 198330221}
+--- !u!1001 &217041259
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1080042660}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &217041260 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 217041259}
+--- !u!1 &294286393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 294286394}
+  m_Layer: 0
+  m_Name: Row (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &294286394
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 294286393}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1884417448}
+  - {fileID: 946687712}
+  - {fileID: 1879585885}
+  - {fileID: 1797998218}
+  - {fileID: 1202845862}
+  - {fileID: 1411613148}
+  - {fileID: 79949672}
+  m_Father: {fileID: 981819676}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &433819675
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 646011276}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &433819676 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 433819675}
+--- !u!1001 &441065706
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1080042660}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &441065707 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 441065706}
+--- !u!1001 &478428461
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 6f8c40c56b04d4982ae56eadeeb099fb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6f8c40c56b04d4982ae56eadeeb099fb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6f8c40c56b04d4982ae56eadeeb099fb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6f8c40c56b04d4982ae56eadeeb099fb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6f8c40c56b04d4982ae56eadeeb099fb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6f8c40c56b04d4982ae56eadeeb099fb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6f8c40c56b04d4982ae56eadeeb099fb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6f8c40c56b04d4982ae56eadeeb099fb, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6f8c40c56b04d4982ae56eadeeb099fb, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &502974864
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1879728808}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &502974865 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 502974864}
+--- !u!1001 &573384696
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1200821260}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &573384697 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 573384696}
+--- !u!1001 &642760141
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1879728808}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &642760142 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 642760141}
+--- !u!1 &646011275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 646011276}
+  m_Layer: 0
+  m_Name: Row (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &646011276
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 646011275}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1503570947}
+  - {fileID: 698437446}
+  - {fileID: 1824473474}
+  - {fileID: 1297209564}
+  - {fileID: 2130831819}
+  - {fileID: 433819676}
+  - {fileID: 879933376}
+  m_Father: {fileID: 981819676}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &696213666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 696213670}
+  - component: {fileID: 696213669}
+  - component: {fileID: 696213668}
+  - component: {fileID: 696213667}
+  m_Layer: 20
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &696213667
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 696213666}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 56492d0c1a51f49b99a9da44e368fd17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!64 &696213668
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 696213666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &696213669
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 696213666}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &696213670
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 696213666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &698437445
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 646011276}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &698437446 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 698437445}
+--- !u!1001 &783302858
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1080042660}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &783302859 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 783302858}
+--- !u!1001 &798450900
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1080042660}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &798450901 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 798450900}
+--- !u!1001 &879933375
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 646011276}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &879933376 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 879933375}
+--- !u!1001 &933932396
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1200821260}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &933932397 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 933932396}
+--- !u!1001 &946687711
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 294286394}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &946687712 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 946687711}
+--- !u!1 &981819675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 981819676}
+  m_Layer: 0
+  m_Name: UnityChans
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &981819676
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 981819675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1879728808}
+  - {fileID: 1200821260}
+  - {fileID: 294286394}
+  - {fileID: 1080042660}
+  - {fileID: 646011276}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &982856328
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1080042660}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &982856329 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 982856328}
+--- !u!1001 &1010806048
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1879728808}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1010806049 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1010806048}
+--- !u!1 &1080042659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1080042660}
+  m_Layer: 0
+  m_Name: Row (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1080042660
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1080042659}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 783302859}
+  - {fileID: 982856329}
+  - {fileID: 1220746859}
+  - {fileID: 54862745}
+  - {fileID: 798450901}
+  - {fileID: 217041260}
+  - {fileID: 441065707}
+  m_Father: {fileID: 981819676}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1107292714
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1200821260}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1107292715 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1107292714}
+--- !u!1001 &1151487422
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1879728808}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1151487423 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1151487422}
+--- !u!1 &1200821259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1200821260}
+  m_Layer: 0
+  m_Name: Row (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1200821260
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1200821259}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2087931527}
+  - {fileID: 933932397}
+  - {fileID: 1673403899}
+  - {fileID: 1575934672}
+  - {fileID: 573384697}
+  - {fileID: 1885639838}
+  - {fileID: 1107292715}
+  m_Father: {fileID: 981819676}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1202845861
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 294286394}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1202845862 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1202845861}
+--- !u!1001 &1220746858
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1080042660}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1220746859 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1220746858}
+--- !u!1001 &1297209563
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 646011276}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1297209564 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1297209563}
+--- !u!1001 &1411613147
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 294286394}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1411613148 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1411613147}
+--- !u!1001 &1465965413
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1879728808}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1465965414 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1465965413}
+--- !u!1001 &1503570946
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 646011276}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1503570947 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1503570946}
+--- !u!1001 &1575934671
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1200821260}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1575934672 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1575934671}
+--- !u!1001 &1673403898
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1200821260}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1673403899 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1673403898}
+--- !u!1001 &1797998217
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 294286394}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1797998218 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1797998217}
+--- !u!1001 &1824473473
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 646011276}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1824473474 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1824473473}
+--- !u!1001 &1879585884
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 294286394}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1879585885 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1879585884}
+--- !u!1 &1879728807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1879728808}
+  m_Layer: 0
+  m_Name: Row
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1879728808
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1879728807}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 198330222}
+  - {fileID: 2073200101}
+  - {fileID: 502974865}
+  - {fileID: 642760142}
+  - {fileID: 1010806049}
+  - {fileID: 1151487423}
+  - {fileID: 1465965414}
+  m_Father: {fileID: 981819676}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1884417447
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 294286394}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1884417448 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1884417447}
+--- !u!1001 &1885639837
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1200821260}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1885639838 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 1885639837}
+--- !u!1001 &1948920382
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c70aff9297e6d4e9fa6e82c0038ded02, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c70aff9297e6d4e9fa6e82c0038ded02, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c70aff9297e6d4e9fa6e82c0038ded02, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c70aff9297e6d4e9fa6e82c0038ded02, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000005572216
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c70aff9297e6d4e9fa6e82c0038ded02, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.9396926
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c70aff9297e6d4e9fa6e82c0038ded02, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.34202018
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c70aff9297e6d4e9fa6e82c0038ded02, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.00000015309537
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c70aff9297e6d4e9fa6e82c0038ded02, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c70aff9297e6d4e9fa6e82c0038ded02, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1992001934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100006, guid: 0f58e0fe394b24ed58b332f76fa9c423, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1992001945}
+  - component: {fileID: 1992001944}
+  - component: {fileID: 1992001943}
+  - component: {fileID: 1992001942}
+  - component: {fileID: 1992001941}
+  - component: {fileID: 1992001938}
+  - component: {fileID: 1992001937}
+  - component: {fileID: 1992001935}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1992001935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992001934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f8b4032391a4d3b9e739dfa6bb27bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetName: Character1_Spine
+  points: []
+  interval: 2
+  stability: 0.5
+  rotationSpeed: 2
+  minDistance: 0.5
+  fovCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 30
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10
+      value: 30
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  autoChange: 0
+--- !u!114 &1992001937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0f58e0fe394b24ed58b332f76fa9c423,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992001934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef3d242a13c447ac90c2d2dc213b1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  intensity: 3
+  chromaticAberration: 5
+  axialAberration: 0.5
+  blur: 0
+  blurSpread: 0.75
+  luminanceDependency: 0.25
+  blurDistance: 2.5
+  vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
+  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
+  chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
+    type: 3}
+--- !u!114 &1992001938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 0f58e0fe394b24ed58b332f76fa9c423,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992001934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a773099f140e846f7835d27351846623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweakMode: 0
+  screenBlendMode: 1
+  hdr: 0
+  sepBlurSpread: 5.25
+  quality: 1
+  bloomIntensity: 0.45
+  bloomThreshhold: 1
+  bloomThreshholdColor: {r: 1, g: 1, b: 1, a: 1}
+  bloomBlurIterations: 3
+  hollywoodFlareBlurIterations: 2
+  flareRotation: 0
+  lensflareMode: 1
+  hollyStretchWidth: 2.5
+  lensflareIntensity: 0
+  lensflareThreshhold: 0.3
+  lensFlareSaturation: 0.75
+  flareColorA: {r: 0.4, g: 0.4, b: 0.8, a: 0.75}
+  flareColorB: {r: 0.4, g: 0.8, b: 0.8, a: 0.75}
+  flareColorC: {r: 0.8, g: 0.4, b: 0.8, a: 0.75}
+  flareColorD: {r: 0.8, g: 0.4, b: 0, a: 0.75}
+  blurWidth: 1
+  lensFlareVignetteMask: {fileID: 2800000, guid: 95ef4804fe0be4c999ddaa383536cde8,
+    type: 3}
+  lensFlareShader: {fileID: 4800000, guid: 459fe69d2f6d74ddb92f04dbf45a866b, type: 3}
+  screenBlendShader: {fileID: 4800000, guid: 7856cbff0a0ca45c787d5431eb805bb0, type: 3}
+  blurAndFlaresShader: {fileID: 4800000, guid: be6e39cf196f146d5be72fbefb18ed75, type: 3}
+  brightPassFilterShader: {fileID: 4800000, guid: 0aeaa4cb29f5d4e9c8455f04c8575c8c,
+    type: 3}
+--- !u!81 &1992001941
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8100000, guid: 0f58e0fe394b24ed58b332f76fa9c423,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992001934}
+  m_Enabled: 1
+--- !u!124 &1992001942
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 12400000, guid: 0f58e0fe394b24ed58b332f76fa9c423,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992001934}
+  m_Enabled: 1
+--- !u!92 &1992001943
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9200000, guid: 0f58e0fe394b24ed58b332f76fa9c423,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992001934}
+  m_Enabled: 1
+--- !u!20 &1992001944
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2000000, guid: 0f58e0fe394b24ed58b332f76fa9c423,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992001934}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.12326989, g: 0.1500537, b: 0.17647058, a: 0.019607844}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.1
+  far clip plane: 200
+  field of view: 24
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 0
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1992001945
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400006, guid: 0f58e0fe394b24ed58b332f76fa9c423, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992001934}
+  m_LocalRotation: {x: -0.000000032244287, y: 0.9802194, z: -0.197914, w: -0.00000015969802}
+  m_LocalPosition: {x: 0, y: 3.938, z: 7.416}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2073200100
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1879728808}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &2073200101 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 2073200100}
+--- !u!1001 &2087931526
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1200821260}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &2087931527 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 2087931526}
+--- !u!1001 &2130831818
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 646011276}
+    m_Modifications:
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_Name
+      value: CandyRockStar (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &2130831819 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400378, guid: 44374dd563c03d64aaff55a08495dd9f, type: 2}
+  m_PrefabInternal: {fileID: 2130831818}
