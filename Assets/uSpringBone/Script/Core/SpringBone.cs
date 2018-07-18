@@ -17,17 +17,17 @@ namespace Es.uSpringBone
         /// </summary>
         public struct Data
         {
-            public Vector3 localPosition;
-            public Vector3 grobalPosition;
-            public Vector3 currentEndpoint;
-            public Vector3 previousEndpoint;
-            public Quaternion localRotation;
-            public Quaternion grobalRotation;
-            public Vector3 boneAxis;
+            public float3 localPosition;
+            public float3 grobalPosition;
+            public float3 currentEndpoint;
+            public float3 previousEndpoint;
+            public quaternion localRotation;
+            public quaternion grobalRotation;
+            public float3 boneAxis;
             public float radius;
             public float stiffnessForce;
             public float dragForce;
-            public Vector3 springForce;
+            public float3 springForce;
             public float springLength;
             public int isRootChild;
 

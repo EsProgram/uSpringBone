@@ -28,8 +28,8 @@ namespace Es.uSpringBone
         /// </summary>
         public struct ParentData
         {
-            public Vector3 grobalPosition;
-            public Quaternion grobalRotation;
+            public float3 grobalPosition;
+            public quaternion grobalRotation;
         }
 
         /// <summary>
@@ -55,8 +55,8 @@ namespace Es.uSpringBone
                 boneDataHeadPtr = (BoneData*)boneData.GetUnsafePtr();
                 colliderDataHeadPtr = (ColliderData*)colliderData.GetUnsafeReadOnlyPtr();
 
-                Vector3 parentPosition = Vector3.zero;
-                Quaternion parentRotation = Quaternion.identity;
+                float3 parentPosition = Vector3.zero;
+                quaternion parentRotation = quaternion.identity;
                 var sqrDt = dt * dt;
                 var parentIndex = 0;
 
@@ -73,41 +73,41 @@ namespace Es.uSpringBone
 
                     var localPosition = boneDataPtr -> localPosition;
                     var localRotation = boneDataPtr -> localRotation;
-                    var grobalPosition = parentPosition + parentRotation * localPosition;
-                    var grobalRotation = parentRotation * localRotation;
+                    var grobalPosition = parentPosition + math.mul(parentRotation, localPosition);
+                    var grobalRotation = math.mul(parentRotation, localRotation);
 
                     // calculate force
-                    Vector3 force = grobalRotation * (boneDataPtr -> boneAxis * boneDataPtr -> stiffnessForce) / sqrDt;
+                    float3 force = math.mul(grobalRotation, (boneDataPtr -> boneAxis * boneDataPtr -> stiffnessForce)) / sqrDt;
                     force += (boneDataPtr -> previousEndpoint - boneDataPtr -> currentEndpoint) * boneDataPtr -> dragForce / sqrDt;
                     force += boneDataPtr -> springForce / sqrDt;
 
-                    Vector3 temp = boneDataPtr -> currentEndpoint;
+                    float3 temp = boneDataPtr -> currentEndpoint;
                     var dataTemp = boneData[i];
 
                     // calculate next endpoint position
                     dataTemp.currentEndpoint = (dataTemp.currentEndpoint - dataTemp.previousEndpoint) + dataTemp.currentEndpoint + (force * sqrDt);
-                    dataTemp.currentEndpoint = ((dataTemp.currentEndpoint - grobalPosition).normalized * dataTemp.springLength) + grobalPosition;
+                    dataTemp.currentEndpoint = (math.normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
 
                     // collision
                     for (int j = 0; j < colliderData.Length; j++)
                     {
                         var colliderDataPtr = (colliderDataHeadPtr + j);
-                        if (Vector3.Distance(dataTemp.currentEndpoint, colliderDataPtr -> grobalPosition) <= (boneDataPtr -> radius + colliderDataPtr -> radius))
+                        if (math.distance(dataTemp.currentEndpoint, colliderDataPtr -> grobalPosition) <= (boneDataPtr -> radius + colliderDataPtr -> radius))
                         {
-                            Vector3 normal = (dataTemp.currentEndpoint - colliderDataPtr -> grobalPosition).normalized;
+                            float3 normal = math.normalize(dataTemp.currentEndpoint - colliderDataPtr -> grobalPosition);
                             dataTemp.currentEndpoint = colliderDataPtr -> grobalPosition + (normal * (boneDataPtr -> radius + colliderDataPtr -> radius));
-                            dataTemp.currentEndpoint = ((dataTemp.currentEndpoint - grobalPosition).normalized * dataTemp.springLength) + grobalPosition;
+                            dataTemp.currentEndpoint = (math.normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
                         }
                     }
 
                     dataTemp.previousEndpoint = temp;
 
                     // calculate next rotation
-                    Vector3 currentDirection = parentRotation * boneDataPtr -> boneAxis;
-                    Quaternion targetRotation = Quaternion.FromToRotation(currentDirection, dataTemp.currentEndpoint - grobalPosition);
+                    float3 currentDirection = math.mul(parentRotation, boneDataPtr -> boneAxis);
+                    quaternion targetRotation = Quaternion.FromToRotation(currentDirection, dataTemp.currentEndpoint - grobalPosition);
 
-                    dataTemp.grobalPosition = parentPosition + parentRotation * localPosition;
-                    dataTemp.grobalRotation = targetRotation * parentRotation;
+                    dataTemp.grobalPosition = parentPosition + math.mul(parentRotation, localPosition);
+                    dataTemp.grobalRotation = math.mul(targetRotation, parentRotation);
                     parentPosition = dataTemp.grobalPosition;
                     parentRotation = dataTemp.grobalRotation;
 

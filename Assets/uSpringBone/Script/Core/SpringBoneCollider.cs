@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 
 namespace Es.uSpringBone
 {
@@ -21,7 +22,7 @@ namespace Es.uSpringBone
         public struct Data
         {
             public float radius;
-            public Vector3 grobalPosition;
+            public float3 grobalPosition;
 
             public Data(float radius, Vector3 grobalPosition)
             {
