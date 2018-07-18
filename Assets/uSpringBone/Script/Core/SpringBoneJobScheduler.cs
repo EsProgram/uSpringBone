@@ -23,6 +23,9 @@ namespace Es.uSpringBone
     [ScriptExecutionOrder(-32000)]
     public class SpringBoneJobScheduler : MonoBehaviour
     {
+        /// <summary>
+        /// Serialize the calculation result for handling in IJobParalellForTransform.
+        /// </summary>
         [BurstCompile]
         struct CopyNativeArrayJob : IJob
         {
@@ -44,11 +47,14 @@ namespace Es.uSpringBone
             }
         }
 
+        /// <summary>
+        /// Apply the calculated Transform.
+        /// It is expensive processing on UnityEditor, but it is relatively inexpensive after compilation.
+        /// </summary>
         [BurstCompile]
         struct ApplyTransformJob : IJobParallelForTransform
         {
-            [ReadOnly]
-            [DeallocateOnJobCompletion]
+            [ReadOnly, DeallocateOnJobCompletion]
             public NativeArray<BoneData> data;
 
             public void Execute(int index, TransformAccess transform)

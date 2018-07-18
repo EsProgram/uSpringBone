@@ -23,12 +23,19 @@ namespace Es.uSpringBone
     [ScriptExecutionOrder(0)]
     public class SpringBoneChain : MonoBehaviour
     {
+        /// <summary>
+        /// Information on the parent of RootBone.
+        /// </summary>
         public struct ParentData
         {
             public Vector3 grobalPosition;
             public Quaternion grobalRotation;
         }
 
+        /// <summary>
+        /// The main logic of SpringBone.
+        /// Calculate the position of the child in the next frame and get rotation in that direction.
+        /// </summary>
         [BurstCompile]
         public struct SpringBoneJob : IJob
         {
@@ -195,6 +202,14 @@ namespace Es.uSpringBone
         }
 
         /// <summary>
+        /// Wait for completion of Job.
+        /// </summary>
+        public void CompleteJob()
+        {
+            jobHandle.Complete();
+        }
+
+        /// <summary>
         /// Update the parent's information of RootBone.
         /// </summary>
         public void UpdateParentData()
@@ -219,16 +234,6 @@ namespace Es.uSpringBone
                 colliderDataTemp[i] = colliders[i].data;
             colliderData.CopyFrom(colliderDataTemp);
             Profiler.EndSample();
-        }
-
-        public void CompleteJob()
-        {
-            jobHandle.Complete();
-        }
-
-        public JobHandle GetJobHandle()
-        {
-            return jobHandle;
         }
 
         /// <summary>
