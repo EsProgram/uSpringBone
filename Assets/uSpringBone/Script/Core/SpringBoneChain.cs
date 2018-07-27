@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Profiling;
+using UnityEngine.Jobs;
 using Unity.Entities;
 using Unity.Transforms;
 using Unity.Mathematics;
@@ -52,8 +53,8 @@ namespace Es.uSpringBone
 
             public unsafe void Execute()
             {
-                boneDataHeadPtr = (BoneData*)boneData.GetUnsafePtr();
-                colliderDataHeadPtr = (ColliderData*)colliderData.GetUnsafeReadOnlyPtr();
+                boneDataHeadPtr = (BoneData * ) boneData.GetUnsafePtr();
+                colliderDataHeadPtr = (ColliderData * ) colliderData.GetUnsafeReadOnlyPtr();
 
                 float3 parentPosition = Vector3.zero;
                 quaternion parentRotation = quaternion.identity;
@@ -112,7 +113,8 @@ namespace Es.uSpringBone
                     parentRotation = dataTemp.grobalRotation;
 
                     // reset root.
-                    if(boneDataPtr -> IsRootBone){
+                    if (boneDataPtr -> IsRootBone)
+                    {
                         dataTemp.grobalPosition = grobalPosition;
                         dataTemp.grobalRotation = grobalRotation;
                         parentPosition = grobalPosition;
@@ -127,17 +129,17 @@ namespace Es.uSpringBone
         [SerializeField]
         private SpringBoneCollider[] colliders;
 
-        SpringBone[] bones;
-        Transform[] rootBoneParents;
-        Transform cachedTransform;
-        NativeArray<BoneData> boneData;
-        NativeArray<ParentData> parentData;
-        NativeArray<ColliderData> colliderData;
-        BoneData[] boneDataTemp;
-        ParentData[] parentDataTemp;
-        ColliderData[] colliderDataTemp;
-        SpringBoneJob job;
-        JobHandle jobHandle;
+        private SpringBone[] bones;
+        private Transform[] rootBoneParents;
+        private Transform cachedTransform;
+        private NativeArray<BoneData> boneData;
+        private NativeArray<ParentData> parentData;
+        private NativeArray<ColliderData> colliderData;
+        private BoneData[] boneDataTemp;
+        private ParentData[] parentDataTemp;
+        private ColliderData[] colliderDataTemp;
+        private SpringBoneJob calculateJob;
+        private JobHandle calculateJobHandle;
 
         public SpringBone[] Bones { get { return bones; } }
         public NativeArray<BoneData> BoneData { get { return boneData; } }
@@ -159,10 +161,9 @@ namespace Es.uSpringBone
             // Cancel parentage relationship.
             foreach (var bone in bones)
             {
-                bone.transform.SetParent(null);
                 // TODO: Hide in inspector.
+                bone.transform.SetParent(null);
             }
-
 
             // Memory allocation.
             boneDataTemp = new BoneData[bones.Length];
@@ -181,7 +182,7 @@ namespace Es.uSpringBone
             SpringBoneJobScheduler.Instance.Register(this);
 
             // Create a job.
-            job = new SpringBoneJob()
+            calculateJob = new SpringBoneJob()
             {
                 boneData = boneData,
                 parentData = parentData,
@@ -197,20 +198,20 @@ namespace Es.uSpringBone
         }
 
         /// <summary>
-        /// Schedule the Job.
+        /// Schedule transform calculate Job.
         /// </summary>
-        public void ScheduleJob()
+        public void ScheduleCalculateJob()
         {
-            job.dt = Time.deltaTime;
-            jobHandle = job.Schedule();
+            calculateJob.dt = Time.deltaTime;
+            calculateJobHandle = calculateJob.Schedule();
         }
 
         /// <summary>
-        /// Wait for completion of Job.
+        /// Wait for completion of calculate Job.
         /// </summary>
-        public void CompleteJob()
+        public void CompleteCalculateJob()
         {
-            jobHandle.Complete();
+            calculateJobHandle.Complete();
         }
 
         /// <summary>
@@ -218,14 +219,12 @@ namespace Es.uSpringBone
         /// </summary>
         public void UpdateParentData()
         {
-            Profiler.BeginSample("<> Update Parent Data");
             for (int i = 0; i < rootBoneParents.Length; ++i)
             {
                 parentDataTemp[i].grobalPosition = rootBoneParents[i].position;
                 parentDataTemp[i].grobalRotation = rootBoneParents[i].rotation;
             }
             parentData.CopyFrom(parentDataTemp);
-            Profiler.EndSample();
         }
 
         /// <summary>
@@ -233,11 +232,9 @@ namespace Es.uSpringBone
         /// </summary>
         public void UpdateColliderData()
         {
-            Profiler.BeginSample("<> Update Colliders");
             for (int i = 0; i < colliders.Length; ++i)
                 colliderDataTemp[i] = colliders[i].data;
             colliderData.CopyFrom(colliderDataTemp);
-            Profiler.EndSample();
         }
 
         /// <summary>
