@@ -10,6 +10,7 @@ using Unity.Collections;
 using Unity;
 using Unity.Jobs;
 using Unity.Burst;
+using Unity.Collections.LowLevel.Unsafe;
 
 using BoneData = Es.uSpringBone.SpringBone.Data;
 using ColliderData = Es.uSpringBone.SpringBoneCollider.Data;
@@ -22,77 +23,96 @@ namespace Es.uSpringBone
     [ScriptExecutionOrder(0)]
     public class SpringBoneChain : MonoBehaviour
     {
-        struct ParentData
+        /// <summary>
+        /// Information on the parent of RootBone.
+        /// </summary>
+        public struct ParentData
         {
-            public Vector3 grobalPosition;
-            public Quaternion grobalRotation;
+            public float3 grobalPosition;
+            public quaternion grobalRotation;
         }
 
+        /// <summary>
+        /// The main logic of SpringBone.
+        /// Calculate the position of the child in the next frame and get rotation in that direction.
+        /// </summary>
         [BurstCompile]
-        struct SpringBoneJob : IJob
+        public struct SpringBoneJob : IJob
         {
             public NativeArray<BoneData> boneData;
             [ReadOnly]
             public NativeArray<ParentData> parentData;
             [ReadOnly]
             public NativeArray<ColliderData> colliderData;
+            [NativeDisableUnsafePtrRestriction]
+            public unsafe BoneData * boneDataHeadPtr;
+            [NativeDisableUnsafePtrRestriction]
+            public unsafe ColliderData * colliderDataHeadPtr;
             public float dt;
 
-            public void Execute()
+            public unsafe void Execute()
             {
-                Vector3 parentPosition = Vector3.zero;
-                Quaternion parentRotation = Quaternion.identity;
+                boneDataHeadPtr = (BoneData*)boneData.GetUnsafePtr();
+                colliderDataHeadPtr = (ColliderData*)colliderData.GetUnsafeReadOnlyPtr();
+
+                float3 parentPosition = Vector3.zero;
+                quaternion parentRotation = quaternion.identity;
                 var sqrDt = dt * dt;
                 var parentIndex = 0;
 
                 for (int i = 0; i < boneData.Length; ++i)
                 {
-                    if (boneData[i].IsRootBone)
+                    var boneDataPtr = (boneDataHeadPtr + i);
+
+                    if (boneDataPtr -> IsRootBone)
                     {
                         parentPosition = parentData[parentIndex].grobalPosition;
                         parentRotation = parentData[parentIndex].grobalRotation;
                         ++parentIndex;
                     }
 
-                    var localPosition = boneData[i].localPosition;
-                    var localRotation = boneData[i].localRotation;
-                    var grobalPosition = parentPosition + parentRotation * localPosition;
-                    var grobalRotation = parentRotation * localRotation;
+                    var localPosition = boneDataPtr -> localPosition;
+                    var localRotation = boneDataPtr -> localRotation;
+                    var grobalPosition = parentPosition + math.mul(parentRotation, localPosition);
+                    var grobalRotation = math.mul(parentRotation, localRotation);
 
                     // calculate force
-                    Vector3 force = grobalRotation * (boneData[i].boneAxis * boneData[i].stiffnessForce) / sqrDt;
-                    force += (boneData[i].previousEndpoint - boneData[i].currentEndpoint) * boneData[i].dragForce / sqrDt;
-                    force += boneData[i].springForce / sqrDt;
+                    float3 force = math.mul(grobalRotation, (boneDataPtr -> boneAxis * boneDataPtr -> stiffnessForce)) / sqrDt;
+                    force += (boneDataPtr -> previousEndpoint - boneDataPtr -> currentEndpoint) * boneDataPtr -> dragForce / sqrDt;
+                    force += boneDataPtr -> springForce / sqrDt;
 
-                    Vector3 temp = boneData[i].currentEndpoint;
+                    float3 temp = boneDataPtr -> currentEndpoint;
                     var dataTemp = boneData[i];
 
                     // calculate next endpoint position
                     dataTemp.currentEndpoint = (dataTemp.currentEndpoint - dataTemp.previousEndpoint) + dataTemp.currentEndpoint + (force * sqrDt);
-                    dataTemp.currentEndpoint = ((dataTemp.currentEndpoint - grobalPosition).normalized * dataTemp.springLength) + grobalPosition;
+                    dataTemp.currentEndpoint = (math.normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
 
                     // collision
                     for (int j = 0; j < colliderData.Length; j++)
-                        if (Vector3.Distance(dataTemp.currentEndpoint, colliderData[j].grobalPosition) <= (boneData[i].radius + colliderData[j].radius))
+                    {
+                        var colliderDataPtr = (colliderDataHeadPtr + j);
+                        if (math.distance(dataTemp.currentEndpoint, colliderDataPtr -> grobalPosition) <= (boneDataPtr -> radius + colliderDataPtr -> radius))
                         {
-                            Vector3 normal = (dataTemp.currentEndpoint - colliderData[j].grobalPosition).normalized;
-                            dataTemp.currentEndpoint = colliderData[j].grobalPosition + (normal * (boneData[i].radius + colliderData[j].radius));
-                            dataTemp.currentEndpoint = ((dataTemp.currentEndpoint - grobalPosition).normalized * dataTemp.springLength) + grobalPosition;
+                            float3 normal = math.normalize(dataTemp.currentEndpoint - colliderDataPtr -> grobalPosition);
+                            dataTemp.currentEndpoint = colliderDataPtr -> grobalPosition + (normal * (boneDataPtr -> radius + colliderDataPtr -> radius));
+                            dataTemp.currentEndpoint = (math.normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
                         }
+                    }
 
                     dataTemp.previousEndpoint = temp;
 
                     // calculate next rotation
-                    Vector3 currentDirection = parentRotation * boneData[i].boneAxis;
-                    Quaternion targetRotation = Quaternion.FromToRotation(currentDirection, dataTemp.currentEndpoint - grobalPosition);
+                    float3 currentDirection = math.mul(parentRotation, boneDataPtr -> boneAxis);
+                    quaternion targetRotation = Quaternion.FromToRotation(currentDirection, dataTemp.currentEndpoint - grobalPosition);
 
-                    dataTemp.grobalPosition = parentPosition + parentRotation * localPosition;
-                    dataTemp.grobalRotation = targetRotation * parentRotation;
+                    dataTemp.grobalPosition = parentPosition + math.mul(parentRotation, localPosition);
+                    dataTemp.grobalRotation = math.mul(targetRotation, parentRotation);
                     parentPosition = dataTemp.grobalPosition;
                     parentRotation = dataTemp.grobalRotation;
 
                     // reset root.
-                    if(boneData[i].IsRootBone){
+                    if(boneDataPtr -> IsRootBone){
                         dataTemp.grobalPosition = grobalPosition;
                         dataTemp.grobalRotation = grobalRotation;
                         parentPosition = grobalPosition;
@@ -104,7 +124,8 @@ namespace Es.uSpringBone
             }
         }
 
-        public SpringBoneCollider[] colliders;
+        [SerializeField]
+        private SpringBoneCollider[] colliders;
 
         SpringBone[] bones;
         Transform[] rootBoneParents;
@@ -118,10 +139,11 @@ namespace Es.uSpringBone
         SpringBoneJob job;
         JobHandle jobHandle;
 
+        public SpringBone[] Bones { get { return bones; } }
+        public NativeArray<BoneData> BoneData { get { return boneData; } }
+
         void Start()
         {
-            SpringBoneJobScheduler.Instance.Register(this);
-
             cachedTransform = transform;
             bones = GetComponentsInChildren<SpringBone>();
 
@@ -136,7 +158,11 @@ namespace Es.uSpringBone
 
             // Cancel parentage relationship.
             foreach (var bone in bones)
-                bone.transform.SetParent(transform);
+            {
+                bone.transform.SetParent(null);
+                // TODO: Hide in inspector.
+            }
+
 
             // Memory allocation.
             boneDataTemp = new BoneData[bones.Length];
@@ -148,8 +174,11 @@ namespace Es.uSpringBone
 
             // Set data.
             SetBoneData();
-            SetParentData();
-            SetColliderData();
+            UpdateParentData();
+            UpdateColliderData();
+
+            // Register this component.
+            SpringBoneJobScheduler.Instance.Register(this);
 
             // Create a job.
             job = new SpringBoneJob()
@@ -158,30 +187,6 @@ namespace Es.uSpringBone
                 parentData = parentData,
                 colliderData = colliderData
             };
-        }
-
-        void LateUpdate()
-        {
-            Profiler.BeginSample("<> JobComplete");
-            jobHandle.Complete();
-            Profiler.EndSample();
-
-            Profiler.BeginSample("<> Copy NativeArray");
-            boneData.CopyTo(boneDataTemp);
-            Profiler.EndSample();
-
-            Profiler.BeginSample("<> Apply Transform");
-            for (int i = 0; i < bones.Length; ++i)
-                bones[i].cachedTransform.SetPositionAndRotation(boneDataTemp[i].grobalPosition, boneDataTemp[i].grobalRotation);
-            Profiler.EndSample();
-
-            Profiler.BeginSample("<> Update Parent Data");
-            SetParentData();
-            Profiler.EndSample();
-
-            Profiler.BeginSample("<> Update Colliders");
-            SetColliderData();
-            Profiler.EndSample();
         }
 
         void OnDestroy()
@@ -201,6 +206,41 @@ namespace Es.uSpringBone
         }
 
         /// <summary>
+        /// Wait for completion of Job.
+        /// </summary>
+        public void CompleteJob()
+        {
+            jobHandle.Complete();
+        }
+
+        /// <summary>
+        /// Update the parent's information of RootBone.
+        /// </summary>
+        public void UpdateParentData()
+        {
+            Profiler.BeginSample("<> Update Parent Data");
+            for (int i = 0; i < rootBoneParents.Length; ++i)
+            {
+                parentDataTemp[i].grobalPosition = rootBoneParents[i].position;
+                parentDataTemp[i].grobalRotation = rootBoneParents[i].rotation;
+            }
+            parentData.CopyFrom(parentDataTemp);
+            Profiler.EndSample();
+        }
+
+        /// <summary>
+        /// Update collider's information.
+        /// </summary>
+        public void UpdateColliderData()
+        {
+            Profiler.BeginSample("<> Update Colliders");
+            for (int i = 0; i < colliders.Length; ++i)
+                colliderDataTemp[i] = colliders[i].data;
+            colliderData.CopyFrom(colliderDataTemp);
+            Profiler.EndSample();
+        }
+
+        /// <summary>
         /// Set information on Bone.
         /// </summary>
         private void SetBoneData()
@@ -208,29 +248,6 @@ namespace Es.uSpringBone
             for (int i = 0; i < bones.Length; ++i)
                 boneDataTemp[i] = bones[i].data;
             boneData.CopyFrom(boneDataTemp);
-        }
-
-        /// <summary>
-        /// Set the parent's information of RootBone.
-        /// </summary>
-        private void SetParentData()
-        {
-            for (int i = 0; i < rootBoneParents.Length; ++i)
-            {
-                parentDataTemp[i].grobalPosition = rootBoneParents[i].position;
-                parentDataTemp[i].grobalRotation = rootBoneParents[i].rotation;
-            }
-            parentData.CopyFrom(parentDataTemp);
-        }
-
-        /// <summary>
-        /// Set collider's information.
-        /// </summary>
-        private void SetColliderData()
-        {
-            for (int i = 0; i < colliders.Length; ++i)
-                colliderDataTemp[i] = colliders[i].data;
-            colliderData.CopyFrom(colliderDataTemp);
         }
     }
 }
