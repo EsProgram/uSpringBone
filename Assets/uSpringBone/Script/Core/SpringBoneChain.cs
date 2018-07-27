@@ -158,7 +158,11 @@ namespace Es.uSpringBone
 
             // Cancel parentage relationship.
             foreach (var bone in bones)
-                bone.transform.SetParent(transform);
+            {
+                bone.transform.SetParent(null);
+                // TODO: Hide in inspector.
+            }
+
 
             // Memory allocation.
             boneDataTemp = new BoneData[bones.Length];
