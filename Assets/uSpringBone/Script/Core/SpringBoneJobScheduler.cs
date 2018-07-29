@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,43 +25,42 @@ namespace Es.uSpringBone
     public class SpringBoneJobScheduler : MonoBehaviour
     {
         /// <summary>
-        /// Serialize the calculation result for handling in IJobParalellForTransform.
-        /// </summary>
-        [BurstCompile]
-        struct CopyNativeArrayJob : IJob
-        {
-            [NativeDisableUnsafePtrRestriction]
-            public unsafe BoneData * srcHeadPtr;
-            [NativeDisableUnsafePtrRestriction]
-            public unsafe BoneData * dstHeadPtr;
-            public int length;
-
-            public unsafe void Execute()
-            {
-                for (int i = 0; i < length; ++i)
-                {
-                    var srcPtr = (srcHeadPtr + i);
-                    var dstPtr = (dstHeadPtr + i);
-                    dstPtr -> grobalPosition = srcPtr -> grobalPosition;
-                    dstPtr -> grobalRotation = srcPtr -> grobalRotation;
-                }
-            }
-        }
-
-        /// <summary>
         /// Apply the calculated Transform.
         /// It is expensive processing on UnityEditor, but it is relatively inexpensive after compilation.
         /// </summary>
         [BurstCompile]
         struct ApplyTransformJob : IJobParallelForTransform
         {
-            [ReadOnly, DeallocateOnJobCompletion]
-            public NativeArray<BoneData> data;
+            [ReadOnly]
+            public NativeArray<IntPtr> boneHeadPtrArray;
+            [ReadOnly]
+            public NativeArray<int> boneLengthArray;
 
-            public void Execute(int index, TransformAccess transform)
+            public unsafe void Execute(int index, TransformAccess transform)
             {
-                transform.position = data[index].grobalPosition;
-                transform.rotation = data[index].grobalRotation;
+                var ptr = GetDataPtr(index);
+
+                transform.position = ptr -> grobalPosition;
+                transform.rotation = ptr -> grobalRotation;
+            }
+
+            private unsafe BoneData* GetDataPtr(int currentIndex)
+            {
+                var headPtrIndex = 0;
+                var elemPtrIndex = currentIndex;
+
+                for(int i = 0; i < boneLengthArray.Length; ++i)
+                {
+                    headPtrIndex = i;
+                    elemPtrIndex = currentIndex;
+                    currentIndex = currentIndex - boneLengthArray[i];
+                    if(currentIndex < 0)
+                        break;
+                }
+
+                var head = (BoneData*)boneHeadPtrArray[headPtrIndex];
+                var elem = (BoneData*)(head + elemPtrIndex);
+                return elem;
             }
         }
 
@@ -91,9 +91,10 @@ namespace Es.uSpringBone
         private const string DefaultObjectName = "SpringBoneManager";
         private static SpringBoneJobScheduler instance;
         private List<SpringBoneChain> chains = new List<SpringBoneChain>();
+        private NativeList<int> boneLengthArray;
+        private NativeList<IntPtr> boneHeadPtrArray;
         private TransformAccessArray access;
-        private ApplyTransformJob transformJob = new ApplyTransformJob();
-        private List<JobHandle> copyJobHandle = new List<JobHandle>();
+        private ApplyTransformJob applyJob;
 
         private void Awake()
         {
@@ -114,7 +115,7 @@ namespace Es.uSpringBone
 
             Profiler.BeginSample("<> Schedule");
             foreach (var chain in chains)
-                chain.ScheduleJob();
+                chain.ScheduleCalculateJob();
             Profiler.EndSample();
 
             Profiler.BeginSample("<> Batch");
@@ -126,73 +127,40 @@ namespace Es.uSpringBone
         {
             Profiler.BeginSample("<> JobComplete");
             foreach (var chain in chains)
-                chain.CompleteJob();
+                chain.CompleteCalculateJob();
             Profiler.EndSample();
 
-            // copy transform data.
-            NativeArray<BoneData> data = ScheduleCopyBoneDataJob();
-
-            Profiler.BeginSample("<> Batch");
+            Profiler.BeginSample("<>Schedule");
+            var applyJobHandle = applyJob.Schedule(access);
             JobHandle.ScheduleBatchedJobs();
             Profiler.EndSample();
 
+            Profiler.BeginSample("<> Update Data");
             foreach (var chain in chains)
             {
                 chain.UpdateParentData();
                 chain.UpdateColliderData();
             }
-
-
-            Profiler.BeginSample("<> Complete");
-            foreach (var handle in copyJobHandle)
-                handle.Complete();
             Profiler.EndSample();
 
-
-            Profiler.BeginSample("<> Transform Apply");
-            transformJob.data = data;
-            var transformJobHandle = transformJob.Schedule(access);
-            JobHandle.ScheduleBatchedJobs();
-            transformJobHandle.Complete();
+            Profiler.BeginSample("<> JobComplete");
+            // TODO: delay.
+            applyJobHandle.Complete();
             Profiler.EndSample();
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             access.Dispose();
-        }
-
-        private unsafe NativeArray<BoneData> ScheduleCopyBoneDataJob()
-        {
-            copyJobHandle.Clear();
-            var data = new NativeArray<BoneData>(access.length, Allocator.TempJob, NativeArrayOptions.UninitializedMemory);
-            var copyJob = new CopyNativeArrayJob();
-            int index = 0;
-            for (int i = 0; i < chains.Count; ++i)
-            {
-                Profiler.BeginSample("<> Slice");
-                var slice = data.Slice(index, chains[i].BoneData.Length);
-                Profiler.EndSample();
-                Profiler.BeginSample("<> Create Job");
-                copyJob.srcHeadPtr = (BoneData*)chains[i].BoneData.GetUnsafeReadOnlyPtr();
-                copyJob.dstHeadPtr = (BoneData*)slice.GetUnsafePtr();
-                copyJob.length = chains[i].BoneData.Length;
-                Profiler.EndSample();
-                index += chains[i].BoneData.Length;
-
-                Profiler.BeginSample("<> Schedule");
-                copyJobHandle.Add(copyJob.Schedule());
-                Profiler.EndSample();
-            }
-
-            return data;
+            boneLengthArray.Dispose();
+            boneHeadPtrArray.Dispose();
         }
 
         /// <summary>
         /// Register the chain of SpringBone.
         /// </summary>
         /// <param name="chain">Chain of SpringBone.</param>
-        public void Register(SpringBoneChain chain)
+        public unsafe void Register(SpringBoneChain chain)
         {
             if (chain == null)
                 return;
@@ -203,10 +171,23 @@ namespace Es.uSpringBone
             chains.Add(chain);
 
             if (!access.isCreated)
-                access = new TransformAccessArray(5000);
-
+                access = new TransformAccessArray(9999);
             foreach (var bone in chain.Bones)
                 access.Add(bone.cachedTransform);
+
+            if(!boneLengthArray.IsCreated)
+                boneLengthArray = new NativeList<int>(Allocator.Persistent);
+            if(!boneHeadPtrArray.IsCreated)
+                boneHeadPtrArray = new NativeList<IntPtr>(Allocator.Persistent);
+
+            boneLengthArray.Add(chain.Bones.Length);
+            boneHeadPtrArray.Add((IntPtr)chain.BoneData.GetUnsafeReadOnlyPtr());
+
+            applyJob = new ApplyTransformJob()
+            {
+                boneLengthArray = boneLengthArray,
+                boneHeadPtrArray = boneHeadPtrArray
+            };
         }
     }
 }
