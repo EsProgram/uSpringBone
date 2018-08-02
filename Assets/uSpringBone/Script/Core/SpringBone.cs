@@ -23,6 +23,7 @@ namespace Es.uSpringBone
             public float3 previousEndpoint;
             public quaternion localRotation;
             public quaternion grobalRotation;
+            public float3 parentScale;
             public float3 boneAxis;
             public float radius;
             public float stiffnessForce;
@@ -38,6 +39,7 @@ namespace Es.uSpringBone
                 Vector3 previousEndpoint,
                 Quaternion localRotation,
                 Quaternion grobalRotation,
+                Vector3 parentScale,
                 Vector3 boneAxis,
                 float radius,
                 float stiffnessForce,
@@ -53,6 +55,7 @@ namespace Es.uSpringBone
                 this.previousEndpoint = previousEndpoint;
                 this.localRotation = localRotation;
                 this.grobalRotation = grobalRotation;
+                this.parentScale = parentScale;
                 this.boneAxis = boneAxis;
                 this.radius = radius;
                 this.stiffnessForce = stiffnessForce;
@@ -107,6 +110,7 @@ namespace Es.uSpringBone
                 child.position,
                 cachedTransform.localRotation,
                 cachedTransform.rotation,
+                cachedTransform.parent.lossyScale,
                 boneAxis,
                 radius,
                 stiffnessForce,

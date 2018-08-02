@@ -72,7 +72,7 @@ namespace Es.uSpringBone
                         ++parentIndex;
                     }
 
-                    var localPosition = boneDataPtr -> localPosition;
+                    var localPosition = boneDataPtr -> localPosition * boneDataPtr -> parentScale;
                     var localRotation = boneDataPtr -> localRotation;
                     var grobalPosition = parentPosition + math.mul(parentRotation, localPosition);
                     var grobalRotation = math.mul(parentRotation, localRotation);
