@@ -40,8 +40,8 @@ namespace Es.uSpringBone
             {
                 var ptr = GetDataPtr(index);
 
-                transform.position = ptr -> grobalPosition;
-                transform.rotation = ptr -> grobalRotation;
+                transform.localPosition = ptr -> grobalPosition;
+                transform.localRotation = ptr -> grobalRotation;
             }
 
             private unsafe BoneData* GetDataPtr(int currentIndex)
