@@ -104,8 +104,12 @@ namespace Es.uSpringBone
                     dataTemp.previousEndpoint = temp;
 
                     // calculate next rotation
-                    float3 currentDirection = math.mul(parentRotation, boneDataPtr -> boneAxis);
-                    quaternion targetRotation = Quaternion.FromToRotation(currentDirection, dataTemp.currentEndpoint - grobalPosition);
+                    float3 from = math.mul(parentRotation, boneDataPtr -> boneAxis);
+                    float3 to = dataTemp.currentEndpoint - grobalPosition;
+                    float diff = math.length(from - to);
+                    quaternion targetRotation = Quaternion.identity;
+                    if(float.MinValue < diff && diff < float.MaxValue)
+                        targetRotation = Quaternion.FromToRotation(from, to);
 
                     dataTemp.grobalPosition = parentPosition + math.mul(parentRotation, localPosition);
                     dataTemp.grobalRotation = math.mul(targetRotation, parentRotation);
