@@ -165,7 +165,6 @@ namespace Es.uSpringBone
             // Cancel parentage relationship.
             foreach (var bone in bones)
             {
-                // TODO: Hide in inspector.
                 bone.transform.SetParent(null);
             }
 

@@ -92,17 +92,26 @@ namespace Es.uSpringBone
         public Vector3 springForce = new Vector3(0.0f, 0.0f, 0.0f);
         public Data data;
 
+        [SerializeField]
+        bool hideOnPlayMode = false;
+
         /// <summary>
         /// Initialize SpringBone data.
         /// </summary>
         /// <param name="root">Root of the chain of SpringBone.</param>
         public void Initialize(SpringBoneChain root)
         {
+            // get child.
             if (child == null)
                 child = transform.GetChild(0);
+
+            // cache transform.
             cachedTransform = transform;
 
+            // whether or not the root bone.
             var isRootChild = transform.parent.GetComponent<SpringBone>() == null ? TRUE : FALSE;
+
+            // make bone data.
             data = new Data(
                 cachedTransform.localPosition,
                 cachedTransform.position,
@@ -119,6 +128,13 @@ namespace Es.uSpringBone
                 Vector3.Distance(cachedTransform.position, child.position),
                 isRootChild
             );
+        }
+
+        private void Start()
+        {
+            // hide in hierarchy.
+            if(hideOnPlayMode)
+                gameObject.hideFlags |= HideFlags.HideInHierarchy;
         }
 
         private void OnDrawGizmosSelected()
