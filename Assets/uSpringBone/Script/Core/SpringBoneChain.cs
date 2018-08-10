@@ -13,6 +13,7 @@ using Unity.Jobs;
 using Unity.Burst;
 using Unity.Collections.LowLevel.Unsafe;
 
+using static Unity.Mathematics.math;
 using BoneData = Es.uSpringBone.SpringBone.Data;
 using ColliderData = Es.uSpringBone.SpringBoneCollider.Data;
 
@@ -57,7 +58,7 @@ namespace Es.uSpringBone
                 colliderDataHeadPtr = (ColliderData * ) colliderData.GetUnsafeReadOnlyPtr();
 
                 float3 parentPosition = Vector3.zero;
-                quaternion parentRotation = quaternion.identity;
+                quaternion parentRotation = Quaternion.identity;
                 var sqrDt = dt * dt;
                 var parentIndex = 0;
 
@@ -74,11 +75,11 @@ namespace Es.uSpringBone
 
                     var localPosition = boneDataPtr -> localPosition * boneDataPtr -> parentScale;
                     var localRotation = boneDataPtr -> localRotation;
-                    var grobalPosition = parentPosition + math.mul(parentRotation, localPosition);
-                    var grobalRotation = math.mul(parentRotation, localRotation);
+                    var grobalPosition = parentPosition + mul(parentRotation, localPosition);
+                    var grobalRotation = mul(parentRotation, localRotation);
 
                     // calculate force
-                    float3 force = math.mul(grobalRotation, (boneDataPtr -> boneAxis * boneDataPtr -> stiffnessForce)) / sqrDt;
+                    float3 force = mul(grobalRotation, (boneDataPtr -> boneAxis * boneDataPtr -> stiffnessForce)) / sqrDt;
                     force += (boneDataPtr -> previousEndpoint - boneDataPtr -> currentEndpoint) * boneDataPtr -> dragForce / sqrDt;
                     force += boneDataPtr -> springForce / sqrDt;
 
@@ -87,32 +88,32 @@ namespace Es.uSpringBone
 
                     // calculate next endpoint position
                     dataTemp.currentEndpoint = (dataTemp.currentEndpoint - dataTemp.previousEndpoint) + dataTemp.currentEndpoint + (force * sqrDt);
-                    dataTemp.currentEndpoint = (math.normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
+                    dataTemp.currentEndpoint = (normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
 
                     // collision
                     for (int j = 0; j < colliderData.Length; j++)
                     {
                         var colliderDataPtr = (colliderDataHeadPtr + j);
-                        if (math.distance(dataTemp.currentEndpoint, colliderDataPtr -> grobalPosition) <= (boneDataPtr -> radius + colliderDataPtr -> radius))
+                        if (distance(dataTemp.currentEndpoint, colliderDataPtr -> grobalPosition) <= (boneDataPtr -> radius + colliderDataPtr -> radius))
                         {
-                            float3 normal = math.normalize(dataTemp.currentEndpoint - colliderDataPtr -> grobalPosition);
+                            float3 normal = normalize(dataTemp.currentEndpoint - colliderDataPtr -> grobalPosition);
                             dataTemp.currentEndpoint = colliderDataPtr -> grobalPosition + (normal * (boneDataPtr -> radius + colliderDataPtr -> radius));
-                            dataTemp.currentEndpoint = (math.normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
+                            dataTemp.currentEndpoint = (normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
                         }
                     }
 
                     dataTemp.previousEndpoint = temp;
 
                     // calculate next rotation
-                    float3 from = math.mul(parentRotation, boneDataPtr -> boneAxis);
+                    float3 from = mul(parentRotation, boneDataPtr -> boneAxis);
                     float3 to = dataTemp.currentEndpoint - grobalPosition;
-                    float diff = math.length(from - to);
+                    float diff = length(from - to);
                     quaternion targetRotation = Quaternion.identity;
                     if(float.MinValue < diff && diff < float.MaxValue)
                         targetRotation = Quaternion.FromToRotation(from, to);
 
-                    dataTemp.grobalPosition = parentPosition + math.mul(parentRotation, localPosition);
-                    dataTemp.grobalRotation = math.mul(targetRotation, parentRotation);
+                    dataTemp.grobalPosition = parentPosition + mul(parentRotation, localPosition);
+                    dataTemp.grobalRotation = mul(targetRotation, parentRotation);
                     parentPosition = dataTemp.grobalPosition;
                     parentRotation = dataTemp.grobalRotation;
 

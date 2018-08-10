@@ -69,13 +69,7 @@ namespace Es.uSpringBone
             /// Whether it is the bone which becomes the root of the hierarchy.
             /// </summary>
             /// <returns>If true, it indicates that it is the root SpringBone.</returns>
-            public bool IsRootBone
-            {
-                get
-                {
-                    return isRootChild == TRUE;
-                }
-            }
+            public bool IsRootBone => isRootChild == TRUE;
         }
 
         const int TRUE = 1;
