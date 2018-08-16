@@ -136,6 +136,8 @@ namespace Es.uSpringBone
 
         [SerializeField]
         private SpringBoneCollider[] colliders;
+        [SerializeField]
+        private bool optimizeGameObject = true;
 
         private SpringBone[] bones;
         private Transform[] rootBoneParents;
@@ -167,10 +169,9 @@ namespace Es.uSpringBone
                 .ToArray();
 
             // Cancel parentage relationship.
-            foreach (var bone in bones)
-            {
-                bone.transform.SetParent(null);
-            }
+            if(optimizeGameObject)
+                foreach (var bone in bones)
+                    bone.transform.SetParent(null);
 
             // Memory allocation.
             boneDataTemp = new BoneData[bones.Length];
