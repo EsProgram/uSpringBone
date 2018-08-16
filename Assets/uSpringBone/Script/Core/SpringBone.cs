@@ -133,8 +133,10 @@ namespace Es.uSpringBone
 
         private void OnDrawGizmosSelected()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, radius);
+            var tmp = Gizmos.color;
+            Gizmos.color = new Color(1f, 0f, 0f, 0.8f);
+            Gizmos.DrawSphere(transform.position, radius);
+            Gizmos.color = tmp;
         }
     }
 }

@@ -66,6 +66,7 @@ namespace Es.uSpringBone
                 {
                     var boneDataPtr = (boneDataHeadPtr + i);
 
+                    // set root parent data.
                     if (boneDataPtr -> IsRootBone)
                     {
                         parentPosition = parentData[parentIndex].grobalPosition;
@@ -73,12 +74,13 @@ namespace Es.uSpringBone
                         ++parentIndex;
                     }
 
+                    // get local and grobal position.
                     var localPosition = boneDataPtr -> localPosition * boneDataPtr -> parentScale;
                     var localRotation = boneDataPtr -> localRotation;
                     var grobalPosition = parentPosition + mul(parentRotation, localPosition);
                     var grobalRotation = mul(parentRotation, localRotation);
 
-                    // calculate force
+                    // calculate force.
                     float3 force = mul(grobalRotation, (boneDataPtr -> boneAxis * boneDataPtr -> stiffnessForce)) / sqrDt;
                     force += (boneDataPtr -> previousEndpoint - boneDataPtr -> currentEndpoint) * boneDataPtr -> dragForce / sqrDt;
                     force += boneDataPtr -> springForce / sqrDt;
@@ -86,11 +88,11 @@ namespace Es.uSpringBone
                     float3 temp = boneDataPtr -> currentEndpoint;
                     var dataTemp = boneData[i];
 
-                    // calculate next endpoint position
+                    // calculate next endpoint position.
                     dataTemp.currentEndpoint = (dataTemp.currentEndpoint - dataTemp.previousEndpoint) + dataTemp.currentEndpoint + (force * sqrDt);
                     dataTemp.currentEndpoint = (normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
 
-                    // collision
+                    // collision.
                     for (int j = 0; j < colliderData.Length; j++)
                     {
                         var colliderDataPtr = (colliderDataHeadPtr + j);
@@ -104,7 +106,7 @@ namespace Es.uSpringBone
 
                     dataTemp.previousEndpoint = temp;
 
-                    // calculate next rotation
+                    // calculate next rotation.
                     float3 from = mul(parentRotation, boneDataPtr -> boneAxis);
                     float3 to = dataTemp.currentEndpoint - grobalPosition;
                     float diff = length(from - to);
@@ -112,8 +114,9 @@ namespace Es.uSpringBone
                     if(float.MinValue < diff && diff < float.MaxValue)
                         targetRotation = Quaternion.FromToRotation(from, to);
 
+                    // set calculated data.
                     dataTemp.grobalPosition = parentPosition + mul(parentRotation, localPosition);
-                    dataTemp.grobalRotation = mul(targetRotation, parentRotation);
+                    dataTemp.grobalRotation = Quaternion.Lerp(dataTemp.grobalRotation, mul(targetRotation, parentRotation), 1f); // TODO: lerp parameter
                     parentPosition = dataTemp.grobalPosition;
                     parentRotation = dataTemp.grobalRotation;
 
