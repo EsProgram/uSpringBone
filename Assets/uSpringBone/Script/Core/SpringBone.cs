@@ -87,7 +87,7 @@ namespace Es.uSpringBone
         public Data data;
 
         [SerializeField]
-        bool hideOnPlayMode = false;
+        bool hideOnPlayMode = true;
 
         /// <summary>
         /// Initialize SpringBone data.
