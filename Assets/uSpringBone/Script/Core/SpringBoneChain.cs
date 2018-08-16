@@ -120,15 +120,7 @@ namespace Es.uSpringBone
                     parentPosition = dataTemp.grobalPosition;
                     parentRotation = dataTemp.grobalRotation;
 
-                    // reset root.
-                    if (boneDataPtr -> IsRootBone)
-                    {
-                        dataTemp.grobalPosition = grobalPosition;
-                        dataTemp.grobalRotation = grobalRotation;
-                        parentPosition = grobalPosition;
-                        parentRotation = grobalRotation;
-                    }
-
+                    // update data.
                     boneData[i] = dataTemp;
                 }
             }
