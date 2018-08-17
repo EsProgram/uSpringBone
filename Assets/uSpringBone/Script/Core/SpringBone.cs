@@ -3,7 +3,12 @@ using Unity;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using System;
 using System.Linq;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Es.uSpringBone
 {
@@ -75,9 +80,9 @@ namespace Es.uSpringBone
         const int TRUE = 1;
         const int FALSE = 0;
 
-        [HideInInspector]
+        [HideInInspector, NonSerialized]
         public Transform cachedTransform;
-        [HideInInspector]
+        [HideInInspector, NonSerialized]
         public Transform child;
         public Vector3 boneAxis = new Vector3(-1.0f, 0.0f, 0.0f);
         public float radius = 0.1f;
@@ -88,6 +93,8 @@ namespace Es.uSpringBone
 
         [SerializeField]
         bool hideOnPlayMode = true;
+        [SerializeField]
+        Mesh debugMesh;
 
         /// <summary>
         /// Initialize SpringBone data.
@@ -97,7 +104,7 @@ namespace Es.uSpringBone
         {
             // get child.
             if (child == null)
-                child = transform.GetChild(0);
+                child = GetChild();
 
             // cache transform.
             cachedTransform = transform;
@@ -124,6 +131,15 @@ namespace Es.uSpringBone
             );
         }
 
+        /// <summary>
+        /// get child transform.
+        /// </summary>
+        /// <returns></returns>
+        private Transform GetChild()
+        {
+            return transform.GetChild(0);
+        }
+
         private void Start()
         {
             // hide in hierarchy.
@@ -131,12 +147,16 @@ namespace Es.uSpringBone
                 gameObject.hideFlags |= HideFlags.HideInHierarchy;
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             var tmp = Gizmos.color;
             Gizmos.color = new Color(1f, 0f, 0f, 0.8f);
-            Gizmos.DrawSphere(transform.position, radius);
+            var childTransform = EditorApplication.isPlaying ? child : GetChild();
+            var length = EditorApplication.isPlaying ? data.springLength : Vector3.Distance(transform.position, childTransform.position);
+            Gizmos.DrawMesh(debugMesh, transform.position, transform.rotation, Vector3.one * radius + boneAxis * length);
             Gizmos.color = tmp;
         }
+#endif
     }
 }
