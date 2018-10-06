@@ -16,7 +16,8 @@
 
 ## Overview
 
-It is a SpringBone which performed speed up using JobSystem.
+It is a SpringBone which performed speed up using ECS + JobSystem.
+
 You can suppress the load of MainThread and let the calculation process be executed by WorkerThread.
 
 Since have only implemented basic functions yet, plan to implement various additional implementations in the future.
