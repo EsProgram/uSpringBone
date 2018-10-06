@@ -14,8 +14,8 @@ using Unity.Burst;
 using Unity.Collections.LowLevel.Unsafe;
 
 using static Unity.Mathematics.math;
-using BoneData = Es.uSpringBone.SpringBone.Data;
-using ColliderData = Es.uSpringBone.SpringBoneCollider.Data;
+using BoneData = Es.uSpringBone.SpringBoneData;
+using ColliderData = Es.uSpringBone.SphereColliderData;
 
 namespace Es.uSpringBone
 {
@@ -46,28 +46,37 @@ namespace Es.uSpringBone
             public NativeArray<ParentData> parentData;
             [ReadOnly]
             public NativeArray<ColliderData> colliderData;
-            [NativeDisableUnsafePtrRestriction]
-            public unsafe BoneData * boneDataHeadPtr;
-            [NativeDisableUnsafePtrRestriction]
-            public unsafe ColliderData * colliderDataHeadPtr;
+            public NativeList<ColliderData> selectedColliderList;
             public float dt;
+            [NativeDisableParallelForRestriction]
+            [NativeDisableContainerSafetyRestriction]
+            public ComponentDataFromEntity<Position> position;
+            [NativeDisableParallelForRestriction]
+            [NativeDisableContainerSafetyRestriction]
+            public ComponentDataFromEntity<Rotation> rotation;
+            [NativeDisableParallelForRestriction]
+            [NativeDisableContainerSafetyRestriction]
+            public ComponentDataFromEntity<ColliderData> collider;
 
             public unsafe void Execute()
             {
-                boneDataHeadPtr = (BoneData * ) boneData.GetUnsafePtr();
-                colliderDataHeadPtr = (ColliderData * ) colliderData.GetUnsafeReadOnlyPtr();
-
                 float3 parentPosition = Vector3.zero;
                 quaternion parentRotation = Quaternion.identity;
                 var sqrDt = dt * dt;
                 var parentIndex = 0;
 
+                // create collider list.
+                selectedColliderList.Clear();
+                for(int i = 0; i < colliderData.Length; ++i)
+                    selectedColliderList.Add(collider[colliderData[i].entity]);
+
+                // spring.
                 for (int i = 0; i < boneData.Length; ++i)
                 {
-                    var boneDataPtr = (boneDataHeadPtr + i);
+                    var bone = boneData[i];
 
                     // set root parent data.
-                    if (boneDataPtr -> IsRootBone)
+                    if (bone.IsRootBone)
                     {
                         parentPosition = parentData[parentIndex].grobalPosition;
                         parentRotation = parentData[parentIndex].grobalRotation;
@@ -75,17 +84,17 @@ namespace Es.uSpringBone
                     }
 
                     // get local and grobal position.
-                    var localPosition = boneDataPtr -> localPosition * boneDataPtr -> parentScale;
-                    var localRotation = boneDataPtr -> localRotation;
+                    var localPosition = bone.localPosition * bone.parentScale;
+                    var localRotation = bone.localRotation;
                     var grobalPosition = parentPosition + mul(parentRotation, localPosition);
                     var grobalRotation = mul(parentRotation, localRotation);
 
                     // calculate force.
-                    float3 force = mul(grobalRotation, (boneDataPtr -> boneAxis * boneDataPtr -> stiffnessForce)) / sqrDt;
-                    force += (boneDataPtr -> previousEndpoint - boneDataPtr -> currentEndpoint) * boneDataPtr -> dragForce / sqrDt;
-                    force += boneDataPtr -> springForce / sqrDt;
+                    float3 force = mul(grobalRotation, (bone.boneAxis * bone.stiffnessForce)) / sqrDt;
+                    force += (bone.previousEndpoint - bone.currentEndpoint) * bone.dragForce / sqrDt;
+                    force += bone.springForce / sqrDt;
 
-                    float3 temp = boneDataPtr -> currentEndpoint;
+                    float3 temp = bone.currentEndpoint;
                     var dataTemp = boneData[i];
 
                     // calculate next endpoint position.
@@ -93,13 +102,14 @@ namespace Es.uSpringBone
                     dataTemp.currentEndpoint = (normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
 
                     // collision.
-                    for (int j = 0; j < colliderData.Length; j++)
+                    for (int j = 0; j < selectedColliderList.Length; ++j)
                     {
-                        var colliderDataPtr = (colliderDataHeadPtr + j);
-                        if (distance(dataTemp.currentEndpoint, colliderDataPtr -> grobalPosition) <= (boneDataPtr -> radius + colliderDataPtr -> radius))
+                        var collider = colliderData[j];
+                        var colliderPosition = position[selectedColliderList[j].entity].Value;
+                        if (distance(dataTemp.currentEndpoint, colliderPosition) <= (bone.radius + collider.radius))
                         {
-                            float3 normal = normalize(dataTemp.currentEndpoint - colliderDataPtr -> grobalPosition);
-                            dataTemp.currentEndpoint = colliderDataPtr -> grobalPosition + (normal * (boneDataPtr -> radius + colliderDataPtr -> radius));
+                            float3 normal = normalize(dataTemp.currentEndpoint - colliderPosition);
+                            dataTemp.currentEndpoint = colliderPosition + (normal * (bone.radius + collider.radius));
                             dataTemp.currentEndpoint = (normalize(dataTemp.currentEndpoint - grobalPosition) * dataTemp.springLength) + grobalPosition;
                         }
                     }
@@ -107,7 +117,7 @@ namespace Es.uSpringBone
                     dataTemp.previousEndpoint = temp;
 
                     // calculate next rotation.
-                    float3 from = mul(parentRotation, boneDataPtr -> boneAxis);
+                    float3 from = mul(parentRotation, bone.boneAxis);
                     float3 to = dataTemp.currentEndpoint - grobalPosition;
                     float diff = length(from - to);
                     quaternion targetRotation = Quaternion.identity;
@@ -122,41 +132,51 @@ namespace Es.uSpringBone
 
                     // update data.
                     boneData[i] = dataTemp;
+
+                    // update entity.
+                    position[dataTemp.entity] = new Position() { Value = dataTemp.grobalPosition };
+                    rotation[dataTemp.entity] = new Rotation() { Value = dataTemp.grobalRotation };
                 }
             }
         }
 
         [SerializeField]
-        private SpringBoneCollider[] colliders;
+        private SphereColliderComponent[] colliders;
         [SerializeField]
         private bool optimizeGameObject = true;
 
-        private SpringBone[] bones;
+        private SpringBoneComponent[] bones;
         private Transform[] rootBoneParents;
-        private Transform cachedTransform;
         private NativeArray<BoneData> boneData;
         private NativeArray<ParentData> parentData;
         private NativeArray<ColliderData> colliderData;
+        private NativeList<ColliderData> selectedColliderList;
         private BoneData[] boneDataTemp;
         private ParentData[] parentDataTemp;
         private ColliderData[] colliderDataTemp;
         private SpringBoneJob calculateJob;
         private JobHandle calculateJobHandle;
+        private ComponentDataFromEntity<Position> position;
+        private ComponentDataFromEntity<Rotation> rotation;
+        private ComponentDataFromEntity<ColliderData> sphereCollider;
 
-        public SpringBone[] Bones { get { return bones; } }
+        public SpringBoneComponent[] Bones { get { return bones; } }
         public NativeArray<BoneData> BoneData { get { return boneData; } }
 
         void Start()
         {
-            cachedTransform = transform;
-            bones = GetComponentsInChildren<SpringBone>();
+            bones = GetComponentsInChildren<SpringBoneComponent>();
 
             // Initialization of SpringBone.
             foreach (var bone in bones)
-                bone.Initialize(this);
+                bone.Initialize();
+
+            // Initialization of SphereCollider
+            foreach (var col in colliders)
+                col.Initialize();
 
             // Cache parent's transform.
-            rootBoneParents = bones.Where(t => t.data.IsRootBone)
+            rootBoneParents = bones.Where(t => t.Value.IsRootBone)
                 .Select(t => t.transform.parent)
                 .ToArray();
 
@@ -172,11 +192,13 @@ namespace Es.uSpringBone
             boneData = new NativeArray<BoneData>(bones.Length, Allocator.Persistent);
             parentData = new NativeArray<ParentData>(rootBoneParents.Length, Allocator.Persistent);
             colliderData = new NativeArray<ColliderData>(colliders.Length, Allocator.Persistent);
+            selectedColliderList = new NativeList<ColliderData>(bones.Length, Allocator.Persistent);
 
             // Set data.
             SetBoneData();
             UpdateParentData();
             UpdateColliderData();
+            UpdateComponentData();
 
             // Register this component.
             SpringBoneJobScheduler.Instance.Register(this);
@@ -186,7 +208,11 @@ namespace Es.uSpringBone
             {
                 boneData = boneData,
                 parentData = parentData,
-                colliderData = colliderData
+                colliderData = colliderData,
+                selectedColliderList = selectedColliderList,
+                position = position,
+                rotation = rotation,
+                collider = sphereCollider
             };
         }
 
@@ -195,6 +221,7 @@ namespace Es.uSpringBone
             boneData.Dispose();
             colliderData.Dispose();
             parentData.Dispose();
+            selectedColliderList.Dispose();
         }
 
         /// <summary>
@@ -202,6 +229,16 @@ namespace Es.uSpringBone
         /// </summary>
         public void ScheduleCalculateJob()
         {
+            calculateJob = new SpringBoneJob()
+            {
+                boneData = boneData,
+                parentData = parentData,
+                colliderData = colliderData,
+                selectedColliderList = selectedColliderList,
+                position = position,
+                rotation = rotation,
+                collider = sphereCollider
+            };
             calculateJob.dt = Time.deltaTime;
             calculateJobHandle = calculateJob.Schedule();
         }
@@ -233,8 +270,19 @@ namespace Es.uSpringBone
         public void UpdateColliderData()
         {
             for (int i = 0; i < colliders.Length; ++i)
-                colliderDataTemp[i] = colliders[i].data;
+                colliderDataTemp[i] = colliders[i].Value;
             colliderData.CopyFrom(colliderDataTemp);
+        }
+
+        /// <summary>
+        /// Update component data.
+        /// </summary>
+        public void UpdateComponentData()
+        {
+            var boneEntityManager = bones[0].GetComponent<GameObjectEntity>().EntityManager;// TODO: cahce
+            position = boneEntityManager.GetComponentDataFromEntity<Position>();
+            rotation = boneEntityManager.GetComponentDataFromEntity<Rotation>();
+            sphereCollider = boneEntityManager.GetComponentDataFromEntity<SphereColliderData>();
         }
 
         /// <summary>
@@ -243,7 +291,7 @@ namespace Es.uSpringBone
         private void SetBoneData()
         {
             for (int i = 0; i < bones.Length; ++i)
-                boneDataTemp[i] = bones[i].data;
+                boneDataTemp[i] = bones[i].Value;
             boneData.CopyFrom(boneDataTemp);
         }
     }
