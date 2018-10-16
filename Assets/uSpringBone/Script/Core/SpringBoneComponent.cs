@@ -23,6 +23,8 @@ namespace Es.uSpringBone
         [HideInInspector]
         public Entity entity;
         [HideInInspector]
+        public Entity parent;
+        [HideInInspector]
         public float3 localPosition;
         [HideInInspector]
         public float3 grobalPosition;
@@ -53,6 +55,7 @@ namespace Es.uSpringBone
 
         public SpringBoneData(
             Entity entity,
+            Entity parent,
             Vector3 localPosition,
             Vector3 grobalPosition,
             Vector3 currentEndpoint,
@@ -70,6 +73,7 @@ namespace Es.uSpringBone
         )
         {
             this.entity = entity;
+            this.parent = parent;
             this.localPosition = localPosition;
             this.grobalPosition = grobalPosition;
             this.currentEndpoint = currentEndpoint;
@@ -123,7 +127,7 @@ namespace Es.uSpringBone
             if (child == null)
                 child = GetChild();
 
-            // FIXME : Entities 0.0.12-preview.17 BUG
+            #region // FIXME : Entities 0.0.12-preview.17 BUG
             //? CopyTransformToGameObjectComponent causes a bug when working on the Editor.
             //? Specifically, since we always try to rewrite Transform with global coordinates, we can not move the parent object.
             //? In addition, the local coordinates of Transform are rewritten to global coordinates, and the positional relationship becomes strange between parent and child.
@@ -135,9 +139,25 @@ namespace Es.uSpringBone
             var cachedTransform = transform;
             var isRootChild = transform.parent.GetComponent<SpringBoneComponent>() == null ? TRUE : FALSE;
 
+            // setup parent component data.
+            var parent = Entity.Null;
+            if(isRootChild == TRUE)
+            {
+                var parentTransform = transform.parent;
+                var parentComponent = parentTransform.gameObject.AddComponent<SpringBoneParentComponent>();
+                var parentPositionComponent = parentTransform.gameObject.AddComponent<PositionComponent>();
+                var parentRotationComponent = parentTransform.gameObject.AddComponent<RotationComponent>();
+                parentPositionComponent.Value = new Position() { Value = parentTransform.position };
+                parentRotationComponent.Value = new Rotation() { Value = parentTransform.rotation };
+
+                parent = parentComponent.GetComponent<GameObjectEntity>().Entity;
+            }
+            #endregion
+
             // make bone data.
             Value = new SpringBoneData(
                 gameObjectEntity.Entity,
+                parent,
                 cachedTransform.localPosition,
                 cachedTransform.position,
                 child.position,

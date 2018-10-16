@@ -85,11 +85,6 @@ namespace Es.uSpringBone
             foreach (var chain in chains)
                 chain.CompleteCalculateJob();
             Profiler.EndSample();
-
-            Profiler.BeginSample("<> Update Data");
-            foreach (var chain in chains)
-                chain.UpdateParentData();
-            Profiler.EndSample();
         }
 
         /// <summary>

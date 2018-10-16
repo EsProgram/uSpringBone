@@ -15,6 +15,7 @@ using Unity.Collections.LowLevel.Unsafe;
 
 using static Unity.Mathematics.math;
 using BoneData = Es.uSpringBone.SpringBoneData;
+using ParentData = Es.uSpringBone.SpringBoneParentData;
 using ColliderData = Es.uSpringBone.SphereColliderData;
 
 namespace Es.uSpringBone
@@ -26,15 +27,6 @@ namespace Es.uSpringBone
     public class SpringBoneChain : MonoBehaviour
     {
         /// <summary>
-        /// Information on the parent of RootBone.
-        /// </summary>
-        public struct ParentData
-        {
-            public float3 grobalPosition;
-            public quaternion grobalRotation;
-        }
-
-        /// <summary>
         /// The main logic of SpringBone.
         /// Calculate the position of the child in the next frame and get rotation in that direction.
         /// </summary>
@@ -42,8 +34,6 @@ namespace Es.uSpringBone
         public struct SpringBoneJob : IJob
         {
             public NativeArray<BoneData> boneData;
-            [ReadOnly]
-            public NativeArray<ParentData> parentData;
             [ReadOnly]
             public NativeArray<ColliderData> colliderData;
             public NativeList<ColliderData> selectedColliderList;
@@ -54,6 +44,9 @@ namespace Es.uSpringBone
             [NativeDisableParallelForRestriction]
             [NativeDisableContainerSafetyRestriction]
             public ComponentDataFromEntity<Rotation> rotation;
+            [NativeDisableParallelForRestriction]
+            [NativeDisableContainerSafetyRestriction]
+            public ComponentDataFromEntity<ParentData> parentData;
             [NativeDisableParallelForRestriction]
             [NativeDisableContainerSafetyRestriction]
             public ComponentDataFromEntity<ColliderData> collider;
@@ -78,8 +71,8 @@ namespace Es.uSpringBone
                     // set root parent data.
                     if (bone.IsRootBone)
                     {
-                        parentPosition = parentData[parentIndex].grobalPosition;
-                        parentRotation = parentData[parentIndex].grobalRotation;
+                        parentPosition = position[bone.parent].Value;
+                        parentRotation = rotation[bone.parent].Value;
                         ++parentIndex;
                     }
 
@@ -148,16 +141,15 @@ namespace Es.uSpringBone
         private SpringBoneComponent[] bones;
         private Transform[] rootBoneParents;
         private NativeArray<BoneData> boneData;
-        private NativeArray<ParentData> parentData;
         private NativeArray<ColliderData> colliderData;
         private NativeList<ColliderData> selectedColliderList;
         private BoneData[] boneDataTemp;
-        private ParentData[] parentDataTemp;
         private ColliderData[] colliderDataTemp;
         private SpringBoneJob calculateJob;
         private JobHandle calculateJobHandle;
         private ComponentDataFromEntity<Position> position;
         private ComponentDataFromEntity<Rotation> rotation;
+        private ComponentDataFromEntity<ParentData> parent;
         private ComponentDataFromEntity<ColliderData> sphereCollider;
 
         public SpringBoneComponent[] Bones { get { return bones; } }
@@ -187,16 +179,13 @@ namespace Es.uSpringBone
 
             // Memory allocation.
             boneDataTemp = new BoneData[bones.Length];
-            parentDataTemp = new ParentData[rootBoneParents.Length];
             colliderDataTemp = new ColliderData[colliders.Length];
             boneData = new NativeArray<BoneData>(bones.Length, Allocator.Persistent);
-            parentData = new NativeArray<ParentData>(rootBoneParents.Length, Allocator.Persistent);
             colliderData = new NativeArray<ColliderData>(colliders.Length, Allocator.Persistent);
             selectedColliderList = new NativeList<ColliderData>(bones.Length, Allocator.Persistent);
 
             // Set data.
             SetBoneData();
-            UpdateParentData();
             UpdateColliderData();
             UpdateComponentData();
 
@@ -207,11 +196,11 @@ namespace Es.uSpringBone
             calculateJob = new SpringBoneJob()
             {
                 boneData = boneData,
-                parentData = parentData,
                 colliderData = colliderData,
                 selectedColliderList = selectedColliderList,
                 position = position,
                 rotation = rotation,
+                parentData = parent,
                 collider = sphereCollider
             };
         }
@@ -220,7 +209,6 @@ namespace Es.uSpringBone
         {
             boneData.Dispose();
             colliderData.Dispose();
-            parentData.Dispose();
             selectedColliderList.Dispose();
         }
 
@@ -232,11 +220,11 @@ namespace Es.uSpringBone
             calculateJob = new SpringBoneJob()
             {
                 boneData = boneData,
-                parentData = parentData,
                 colliderData = colliderData,
                 selectedColliderList = selectedColliderList,
                 position = position,
                 rotation = rotation,
+                parentData = parent,
                 collider = sphereCollider
             };
             calculateJob.dt = Time.deltaTime;
@@ -249,19 +237,6 @@ namespace Es.uSpringBone
         public void CompleteCalculateJob()
         {
             calculateJobHandle.Complete();
-        }
-
-        /// <summary>
-        /// Update the parent's information of RootBone.
-        /// </summary>
-        public void UpdateParentData()
-        {
-            for (int i = 0; i < rootBoneParents.Length; ++i)
-            {
-                parentDataTemp[i].grobalPosition = rootBoneParents[i].position;
-                parentDataTemp[i].grobalRotation = rootBoneParents[i].rotation;
-            }
-            parentData.CopyFrom(parentDataTemp);
         }
 
         /// <summary>
@@ -282,6 +257,7 @@ namespace Es.uSpringBone
             var boneEntityManager = bones[0].GetComponent<GameObjectEntity>().EntityManager;// TODO: cahce
             position = boneEntityManager.GetComponentDataFromEntity<Position>();
             rotation = boneEntityManager.GetComponentDataFromEntity<Rotation>();
+            parent = boneEntityManager.GetComponentDataFromEntity<ParentData>();
             sphereCollider = boneEntityManager.GetComponentDataFromEntity<SphereColliderData>();
         }
 
